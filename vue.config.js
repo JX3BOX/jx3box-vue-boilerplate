@@ -10,12 +10,16 @@ module.exports = {
         //FOR Localhost => development
         (process.env.NODE_ENV === 'development' && '/') ||
 
-        //FOR ECS + GithubPages => BY jsdelivr
+        //BY jsdelivr
         (process.env.STATIC_PATH === "jsdelivr" && `${JX3BOX.__staticPath["jsdelivr"]}${pkg.name}@gh-pages/`) || 
-        //FOR ECS + GithubPages => BY relative path
+
+        //BY OSS=>CDN
+        (process.env.STATIC_PATH === "mirror" && `${JX3BOX.__staticPath["mirror"]}${pkg.name}/`) ||
+
+        //BY relative path
         (process.env.STATIC_PATH === "repo" && `/${pkg.name}/`) || 
 
-        //FOR ECS + GithubPages => BY root path or bind a domain
+        //BY root path or bind a domain
         (process.env.STATIC_PATH == 'root' && '/') || 
 
         //for lost
