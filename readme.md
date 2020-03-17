@@ -6,7 +6,7 @@
 #### 项目创建
 1. 🌈 修改 ***package.json*** 中的name字段为`$repo`
 2. 🌈 修改 ***.github/workflows/deploy.yml*** 中的bucket位置,如非独立仓库,应为`oss://jx3box-www/$repo/`
-3. 🌈 指定 ***.env*** 中的 [**`STATIC_PATH`**](#static)
+3. 🌈 指定 ***.env*** 中的 [**`STATIC_PATH`**](#静态资源路径)
 
 #### 项目启动
 1. 🌈 `npm install` 安装依赖
@@ -27,7 +27,7 @@
 + ✨ ecs需自行部署,同步gh-pages分支.
 
 ## 其它说明
-#### <a href="#static">静态资源路径</a>  
+#### 静态资源路径  
 默认通过 ***.env*** 文件中 **`STATIC_PATH`** 来指定加载路径,可选值:  
 1. 🌍 jsdelivr - 自动回源到github pages 【当前默认】 
 2. 🌸 root - 使用相对路径,且项目为独立域时
