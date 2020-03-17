@@ -14,7 +14,11 @@
 
 #### 项目修改
 1. 🌈 修改***setting.json***文件,优化seo
-2. 🌈 默认基于vue + element ui,lib库请直接在public/$template中引用jsdelivr地址
+
+#### 依赖说明
+1. 🌈 默认基于vue + element ui,lib库请直接在public/$template中引用jsdelivr地址
+2. css变量默认包含 ***./assets/css/var.less*** 自定义变量
+3. css mixin默认包含[csslab](https://github.com/iRuxu/csslab)
 
 #### 部署上线
 + 🌈 添加项目secrets=>`AccessKey_ID`+`Access_Key_Secret`
@@ -36,6 +40,7 @@ github pages与oss由actions自动部署,ecs自行部署
 3. 💟 oss - 国内备用方案,当DNS解析为整站CDN时生效  
 
 #### DNS解析
+目前为境外解析至github,境内解析为ecs
 1. 🌍 github pages - 国外直接解析到github
 2. 💖 ecs - 国内A记录至指定ECS 【当前默认】
 3. 💟 oss - 国内备用方案,整站CDN,自动回源至oss
