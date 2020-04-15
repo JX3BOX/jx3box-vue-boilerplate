@@ -4,12 +4,6 @@
 // Vue.use(ElementUI);
 Vue.config.productionTip = false;
 
-import Header from "../node_modules/@jx3box/jx3box-common/vue/Header.vue";
-new Vue({
-    render: h => h(Header),
-    el: '#c-header'
-});
-
 import router from "./router";
 import store from "./store";
 import App from "./App.vue";
