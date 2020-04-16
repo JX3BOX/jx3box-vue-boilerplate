@@ -9,16 +9,16 @@ module.exports = {
     // pages:{
     //     index : {
     //         title : 'Home - JX3BOX',
-    //         entry:'src/index/index.js',
+    //         entry:'src/main.js',
     //         template : 'public/index.html',
     //         filename:'index.html',
     //     },
-    //     sub : {
-    //         title : 'Sub - JX3BOX',
-    //         entry:'src/index/sub.js',
-    //         template : 'public/sub.html',
-    //         filename:'sub/index.html',
-    //     }
+    //     $project : {
+    //         title : 'Home - JX3BOX',
+    //         entry:'src/core/$project/index.js',
+    //         template : 'public/$project/index.html',
+    //         filename:'$project/index.html',
+    //     },
     // },
 
     //❤️ define path for static files ~
