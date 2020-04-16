@@ -5,6 +5,22 @@ const Setting = require("./setting.json");
 
 module.exports = {
 
+    //❤️ Multiple pages ~
+    // pages:{
+    //     index : {
+    //         title : 'Home - JX3BOX',
+    //         entry:'src/index/index.js',
+    //         template : 'public/index.html',
+    //         filename:'index.html',
+    //     },
+    //     sub : {
+    //         title : 'Sub - JX3BOX',
+    //         entry:'src/index/sub.js',
+    //         template : 'public/sub.html',
+    //         filename:'sub/index.html',
+    //     }
+    // },
+
     //❤️ define path for static files ~
     publicPath:
         //FOR Localhost => development
@@ -28,6 +44,7 @@ module.exports = {
     chainWebpack: config => {
 
         //💘 html-webpack-plugin ~
+        // Multiple pages disable the block below
         config.plugin("html").tap(args => {
             args[0].meta = {                            //------设置SEO信息
                 Keywords: Setting.keys,
