@@ -7,8 +7,8 @@
 </template>
 
 <script>
-import Breadcrumb from './components/Breadcrumb.vue';
-import Sidebar from './components/Sidebar.vue';
+import Breadcrumb from '@/components/Breadcrumb.vue';
+import Sidebar from '@/components/Sidebar.vue';
 
 export default {
     name: "App",
