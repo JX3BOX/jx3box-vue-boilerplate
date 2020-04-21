@@ -1,5 +1,6 @@
 <template>
     <div class="c-breadcrumb">
+        <LeftSideToggle />
         <!-- TODO:修改链接地址 -->
         <a class="u-channel" href="/">
             <!-- img class="u-channel-logo" svg-inline src="../assets/img/cj.svg" / -->
