@@ -16,6 +16,7 @@
         >发布</el-button>
     </div>
 </template>
+
 <script>
 export default {
     name: "Info",
@@ -30,10 +31,12 @@ export default {
 </script>
 
 <style lang="less">
-.m-info {
+.c-breadcrumb {
+    .u-stat {
+    }
 }
 @media screen and (max-width:@ipad){
-    .m-info{
+    .c-breadcrumb{
         .u-stat{
             white-space:nowrap;
             overflow:auto;
