@@ -7,7 +7,10 @@ Vue.config.productionTip = false;
 
 import JX3BOX_UI from '@jx3box/jx3box-common/vue'
 Vue.use(JX3BOX_UI);
+
+const axios = require('axios');
 Vue.prototype.$axios = axios;
+Vue.prototype.$axios.defaults.withCredentials = true;
 
 // import router from "../router";
 // import store from "../store";
