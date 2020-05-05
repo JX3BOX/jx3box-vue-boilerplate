@@ -2,7 +2,7 @@
     <div id="app">
         <Header></Header>
         <Breadcrumb name="频道名称" slug="slug" root="/slug">
-            <img slot="logo" svg-inline src="../assets/img/logo.svg" />
+            <img slot="logo" svg-inline src="./assets/img/logo.svg" />
             <Info />
         </Breadcrumb>
         <LeftSidebar>
@@ -37,7 +37,7 @@ import Extend from '@/components/Extend.vue';
         components:{
             Info,
             Nav,
-            Extend
+            Extend,
         }
     }
 </script>
