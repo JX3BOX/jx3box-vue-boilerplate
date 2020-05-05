@@ -1,18 +1,19 @@
 <template>
     <div id="app">
-        <Header />
-        <Breadcrumb>
+        <Header></Header>
+        <Breadcrumb name="频道名称" slug="slug" root="/slug">
+            <img slot="logo" svg-inline src="../assets/img/logo.svg" />
             <Info />
         </Breadcrumb>
         <LeftSidebar>
             <Nav />
         </LeftSidebar>
-        <Main>
-            <!-- content -->
+        <Main :withoutRight="false">
+            primary content
             <RightSidebar>
                 <Extend/>
             </RightSidebar>
-            <Footer/>
+            <Footer></Footer>
         </Main>
     </div>
 </template>

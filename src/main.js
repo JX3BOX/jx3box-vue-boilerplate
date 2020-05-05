@@ -5,12 +5,18 @@ Vue.config.productionTip = false;
 // import "element-ui/lib/theme-chalk/index.css";
 // Vue.use(ElementUI);
 
-import JX3BOX_UI from '@jx3box/jx3box-common/vue'
+import JX3BOX_UI from '@jx3box/jx3box-common-ui'
 Vue.use(JX3BOX_UI);
 
 const axios = require('axios');
 Vue.prototype.$axios = axios;
-Vue.prototype.$axios.defaults.withCredentials = true;
+Vue.prototype.$http = axios;
+// Vue.prototype.$axios.defaults.withCredentials = true;
+
+const _axios = axios.create({
+    withCredentials: true,
+})
+Vue.prototype.$https = _axios;
 
 // import router from "../router";
 // import store from "../store";
