@@ -10,7 +10,7 @@
   "dependencies": {
     "@jx3box/jx3box-comment-ui": "^0.1.2",
     "@jx3box/jx3box-common": "^1.1.2",
-    "@jx3box/jx3box-common-ui": "0.0.6",
+    "@jx3box/jx3box-common-ui": "0.0.7",
     "axios": "^0.19.2",
     "core-js": "^3.4.3",
     "element-ui": "^2.13.0",
