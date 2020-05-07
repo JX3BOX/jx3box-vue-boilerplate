@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <Header></Header>
-        <Breadcrumb name="频道名称" slug="slug" root="/slug">
+        <Breadcrumb name="频道名称" slug="slug" root="/slug" publishEnable="true">
             <img slot="logo" svg-inline src="./assets/img/logo.svg" />
             <Info />
         </Breadcrumb>
@@ -10,6 +10,7 @@
         </LeftSidebar>
         <Main :withoutRight="false">
             primary content
+            <!-- <Comment post-id="100"/> -->
             <RightSidebar>
                 <Extend/>
             </RightSidebar>
