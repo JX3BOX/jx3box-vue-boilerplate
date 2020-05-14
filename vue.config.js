@@ -21,10 +21,25 @@ module.exports = {
     //     },
     // },
 
+    //❤️ Porxy ~
+    // devServer: {
+    //     proxy: {
+    //         "/api": {
+    //             "target": process.env["DEV_SERVER"] == "true" ? "http://localhost:51818" : "https://api.jx3box.com",
+    //             "onProxyReq": function (request) {
+    //                 request.setHeader("origin", "");
+    //             }
+    //         }
+    //     }
+    // },
+
     //❤️ define path for static files ~
     publicPath:
         //FOR Localhost => development
         (process.env.NODE_ENV === 'development' && '/') ||
+
+        //BY origin
+        (process.env.STATIC_PATH === "origin" && `${JX3BOX.__staticPath["origin"]}${pkg.name}/`) || 
 
         //BY jsdelivr
         (process.env.STATIC_PATH === "jsdelivr" && `${JX3BOX.__staticPath["jsdelivr"]}${pkg.name}@gh-pages/`) || 
