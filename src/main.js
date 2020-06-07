@@ -9,15 +9,17 @@ Vue.use(ElementUI);
 import JX3BOX_UI from '@jx3box/jx3box-common-ui'
 import "@jx3box/jx3box-common/css/element.css";
 Vue.use(JX3BOX_UI);
+import Comments from "@jx3box/jx3box-comment-ui"
+Vue.use(Comments)
 
 // 数据与路由
-// import router from "../router";
-// import store from "../store";
+import router from "./router";
+import store from "./store";
 
 import App from "./App.vue";
 new Vue({
-    // router,
-    // store,
+    router,
+    store,
     render: h => h(App),
 }).$mount("#app");
 
