@@ -19,6 +19,15 @@
     // .mb(20px);
 }
 
+@media screen and (max-width:@phone){
+    .m-single-header{
+        padding:15px;
+    }
+    .m-single-panel{
+        .none;
+    }
+}
+
 .m-single-title {
     .fz(32px);
     padding: 1px 0;
@@ -39,6 +48,7 @@
 }
 @media screen and (max-width:@phone){
     .m-single-title{
+        .fz(1rem);
         .u-title{
             word-break: break-all;
             white-space: normal;
@@ -176,4 +186,3 @@
 .m-single-comment {
     padding: 20px;
 }
-

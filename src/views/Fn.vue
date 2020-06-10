@@ -1,9 +1,6 @@
 <template>
     <div class="v-fn">
 
-        <RightSidebar>
-            <!-- <Extend /> -->
-        </RightSidebar>
     </div>
 </template>
 

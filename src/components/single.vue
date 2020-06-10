@@ -1,97 +1,86 @@
 <template>
-    <div class="m-single-box m-fb-single" v-if="!loading" :loading="loading">
+    <div class="m-single-box" :loading="loading">
+
+        <!-- 头部 -->
         <header class="m-single-header">
+
+            <!-- 标题 -->
             <div class="m-single-title">
-                <!-- 标题 -->
-                <a class="u-title u-sub-block" :href="url">{{
-                    post.post_title
-                }}</a>
+                <a class="u-title u-sub-block" :href="url">{{title}}</a>
             </div>
 
+            <!-- 信息 -->
             <div class="m-single-info">
+
                 <!-- 用户名 -->
                 <div class="u-author u-sub-block">
-                    <i class="u-icon-author2"
-                        ><img svg-inline src="../assets/img/author.svg"
-                    /></i>
-                    <a class="u-name" :href="authorLink">{{ author.name }}</a>
+                    <i class="u-author-icon"><img svg-inline src="../assets/img/single/author.svg"/></i>
+                    <a class="u-name" :href="author_link">{{ author_name }}</a>
                 </div>
 
+                <!-- 自定义字段 -->
                 <div class="u-meta u-sub-block">
                     <em class="u-label">首领</em>
-                    <span class="u-value u-boss-list">
-                        {{ format(meta, "fb_boss") }}
-                    </span>
-                </div>
-
-                <div class="u-meta u-sub-block">
-                    <em class="u-label">模式</em>
-                    <span class="u-value u-mode-list c-jx3fb-mode">
-                        {{ format(meta, "fb_level") }}
+                    <span class="u-value">
+                        {{ formatMeta("fb_boss") }}
                     </span>
                 </div>
 
                 <!-- 发布日期 -->
                 <span class="u-podate u-sub-block" title="发布日期">
-                    <i class="u-icon-podate"
-                        ><img svg-inline src="../assets/img/podate.svg"
-                    /></i>
-                    <time>{{ post.post_date | dateFormat }}</time>
+                    <i class="u-icon-podate"><img svg-inline src="../assets/img/single/podate.svg"/></i>
+                    <time>{{ post_date }}</time>
                 </span>
 
-                <!-- 最后更新时间 -->
+                <!-- 最后更新 -->
                 <span class="u-modate u-sub-block" title="最后更新">
-                    <i class="u-icon-modate"
-                        ><img svg-inline src="../assets/img/modate.svg"
-                    /></i>
-                    <time>{{ post.post_modified | dateFormat }}</time>
+                    <i class="u-icon-modate"><img svg-inline src="../assets/img/single/modate.svg"/></i>
+                    <time>{{ update_date }}</time>
                 </span>
 
                 <!-- 编辑 -->
-                <a class="u-edit u-sub-block" :href="editLink" v-if="showEdit">
+                <a class="u-edit u-sub-block" :href="edit_link" v-if="canEdit">
                     <i class="u-icon-edit el-icon-edit-outline"></i>
                     <span>编辑</span>
                 </a>
             </div>
 
+            <!-- 操作 -->
             <div class="m-single-panel">
-                <!-- 收藏 -->
                 <Fav />
-                <el-button
-                    size="mini"
-                    type="primary"
-                    disabled
-                    title="即将推出.."
-                    ><i class="el-icon-bell"></i><span>订阅</span></el-button
-                >
             </div>
+
         </header>
 
+        <!-- 文章前 -->
         <div class="m-single-prepend">
-            <div class="m-single-excerpt" v-if="post.post_excerpt">
+
+            <!-- 摘要 -->
+            <div class="m-single-excerpt" v-if="excerpt">
                 <el-divider content-position="left">Excerpt</el-divider>
-                {{ post.post_excerpt }}
-                <!-- <Mark class="u-mark" value="作者摘要"/> -->
+                {{ excerpt }}
             </div>
+
         </div>
 
+        <!-- 文章内容 -->
         <div class="m-single-post">
             <el-divider content-position="left">JX3BOX</el-divider>
             <div class="m-single-content">
-                <Article
-                    :content="post.post_content"
-                    directorybox="#directory"
-                />
+                <Article :content="post.post_content" directorybox="#directory"/>
             </div>
         </div>
 
+        <!-- 文章后 -->
         <div class="m-single-append"></div>
 
+        <!-- 评论 -->
         <div class="m-single-comment">
             <el-divider content-position="left">评论</el-divider>
             <Comment :post-id="id" />
         </div>
 
+        <!-- 底部 -->
         <footer class="m-single-footer">
             <!-- <ins
                 class="adsbygoogle"
@@ -106,45 +95,67 @@
 </template>
 
 <script>
-import lodash from "lodash";
-import { getPost } from "../service/getPost";
+// 助手函数
+import _ from "lodash";
 import dateFormat from "../utils/dateFormat";
-import { __Links } from "@jx3box/jx3box-common/js/jx3box.json";
 import { authorLink, editLink } from "@jx3box/jx3box-common/js/utils.js";
+// 变量模块
+import { __Links } from "@jx3box/jx3box-common/js/jx3box.json";
 import User from "@jx3box/jx3box-common/js/user.js";
+// 数据服务
+import { getPost } from "../service/post.js";
+
 export default {
     name: "single",
     props: [],
     data: function() {
         return {
+            loading: false,
+
             post: {},
             setting: {},
             meta: {},
             author: {},
-            loading: true,
-            url: location.href,
         };
     },
     computed: {
-        authorLink: function() {
-            return authorLink(this.author.uid);
-        },
-        editLink: function() {
-            return editLink(this.post.post_type, this.post.ID);
-        },
         id: function() {
             return this.$store.state.pid;
         },
-        showEdit: function() {
+        title : function (){
+            return _.get(this.post,'post_title') || '无标题' 
+        },
+        url : function (){
+            return location.href
+        },
+        author_link: function() {
+            return authorLink(_.get(this.author,'uid'));
+        },
+        author_name : function (){
+            return _.get(this.author,'name') || '匿名'
+        },
+        post_date : function (){
+            return dateFormat(new Date(_.get(this.post,'post_date')));
+        },
+        update_date : function (){
+            return dateFormat(new Date(_.get(this.post,'post_modified')));
+        },
+        edit_link: function() {
+            return editLink(_.get(this.post,'post_type'), _.get(this.post,'ID'));
+        },
+        canEdit: function() {
             return (
-                this.post.post_author == User.getInfo().uid ||
+                _.get(this.post,'post_author') == User.getInfo().uid ||
                 User.getInfo().group > 60
             );
         },
+        excerpt : function (){
+            return _.get(this.post,'post_excerpt')
+        }
     },
     methods: {
-        format: function(parent, key) {
-            let val = lodash.get(parent, key);
+        formatMeta: function(key) {
+            let val = _.get(this.meta, key);
             if (Array.isArray(val)) {
                 return val.toString();
             } else {
@@ -152,15 +163,11 @@ export default {
             }
         },
     },
-    filters: {
-        dateFormat: function(val) {
-            return dateFormat(new Date(val));
-        },
-    },
-    mounted: function() {
-        if (this.$store.state.pid) {
+    filters: {},
+    created: function() {
+        if (this.id) {
             this.loading = true;
-            getPost(this.$store.state.pid)
+            getPost(this.id)
                 .then((res) => {
                     this.post = this.$store.state.post = res.data.data.post;
                     this.meta = this.$store.state.meta =
@@ -174,7 +181,7 @@ export default {
                 .catch((err) => {
                     console.log(err);
                 })
-                .finnaly(() => {
+                .finally(() => {
                     this.loading = false;
                 });
         }

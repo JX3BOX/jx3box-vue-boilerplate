@@ -1,40 +1,29 @@
 <template>
     <div class="m-list-side">
+
+        <!-- 群号 -->
         <RightSideMsg>
             <em>家园玩法交流群</em> :
-            <strong
-                ><a href="https://jq.qq.com/?_wv=1027&k=InbtJGcw"
-                    >658035079</a
-                ></strong
-            >
+            <strong><a href="https://jq.qq.com/?_wv=1027&k=InbtJGcw">658035079</a></strong>
         </RightSideMsg>
+
+        <!-- 排行榜 -->
         <div class="m-side-rank">
             <h3 class="c-sidebar-right-title">
-                <img
-                    class="u-icon"
-                    svg-inline
-                    src="../assets/img/rank.svg"
-                />最高花价
-                <a href="/house#/flower" class="m-flower-rec-more"
-                    >查看更多<i class="el-icon-d-arrow-right"></i
-                ></a>
+                <img class="u-icon" svg-inline src="../assets/img/side/rank.svg" />
+                最高花价
+                <a href="/house#/flower" class="m-flower-rec-more">查看更多<i class="el-icon-d-arrow-right"></i></a>
             </h3>
         </div>
+
+        <!-- 其他链接 -->
         <div class="m-side-links">
             <h3 class="c-sidebar-right-title">
-                <img
-                    class="u-icon"
-                    svg-inline
-                    src="../assets/img/puzzle.svg"
-                />相关链接
+                <img class="u-icon" svg-inline src="../assets/img/side/puzzle.svg" />
+                相关链接
             </h3>
             <div class="c-sidebar-right-list">
-                <a
-                    class="u-item"
-                    href="https://www.jx3box.com/tool/13948/"
-                    target="_blank"
-                    >如何导出家园蓝图？</a
-                >
+                <a class="u-item" href="https://www.jx3box.com/tool/13948/" target="_blank">如何导出家园蓝图？</a>
             </div>
         </div>
 
