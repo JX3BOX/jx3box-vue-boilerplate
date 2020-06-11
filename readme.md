@@ -16,7 +16,7 @@
 1. 🌈 修改***setting.json***文件,优化seo
 
 #### 依赖说明
-1. 🌈 默认基于vue + element ui,lib库请直接在public/$template中引用jsdelivr地址
+1. 🌈 默认基于vue + element ui,lib库请直接在public/$template中引用mirror地址
 2. css变量默认包含 ***./assets/css/var.less*** 自定义变量
 3. css mixin默认包含[csslab](https://github.com/iRuxu/csslab)
 
