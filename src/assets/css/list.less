@@ -1,20 +1,6 @@
-// 列表搜索
-.m-archive-search{
-    .mb(10px);
-    .el-select .el-input {
-        width: 100px;
-    }
-    .u-switch{
-        .el-switch__label{
-            .bold;
-            color:#666;
-        }
-    }
-}
-
 // 排序
 .m-archive-order {
-    .fz(14px);
+    .fz(12px);
     margin-bottom: 20px;
     padding-bottom: 5px;
     .clearfix;
@@ -78,12 +64,17 @@
         .u-publish {
             .mr(10px);
         }
+        .u-filter{
+            .w(110px);
+        }
+        .u-modes{
+            .w(140px);
+        }
         .u-filter,.u-modes {
             .pr;
             background-color: @bg-light;
             border: 1px solid #ddd;
             .r(4px);
-            .w(140px);
             user-select: none;
             padding:6px 0;
 
@@ -103,9 +94,9 @@
         }
         .u-options {
             .pa;
-            .lt(-1px,31px);
+            .lt(-1px,29px);
             padding: 5px 0;
-            .w(140px);
+            .w(100%);
             background-color:#fff;
             border: 1px solid #ddd;
             .z(2);
@@ -125,7 +116,6 @@
     }
 }
 
-// 列表
 .m-archive-list {
     .u-list {
         padding: 0;
@@ -164,7 +154,7 @@
             img {
                 filter: saturate(140%) brightness(120%);
             }
-            border-color: @primary;
+            border-color: @border;
         }
     }
 
@@ -184,13 +174,18 @@
                 content: "🎯";
                 .mr(5px);
             }
+            .u-title:hover{
+                box-shadow: 0 1px 0 #f00;
+            }
         }
         .u-title {
+            // color:@darkblue;
+            font-weight:400;
             &:hover {
                 box-shadow: 0 1px 0 @primary;
             }
         }
-        .fz(16px, 2);
+        .fz(15px, 2);
         font-weight: normal;
         .lh(2);
         font-weight: 400;
@@ -220,7 +215,7 @@
     // 内容·描述类
     .u-desc {
         .db;
-        .fz(13px, 1.8);
+        .fz(12px, 1.8);
         color: #555;
         .break(2);
         .mb(6px);
@@ -231,7 +226,7 @@
     .u-metalist {
         .nobreak;
         .db;
-        .fz(13px, 25px);
+        .fz(12px, 25px);
         .mb(4px);
         strong {
             .dbi;
@@ -290,26 +285,35 @@
     .u-misc {
         .db;
         .pa;
-        .rb(10px, 20px);
+        .rb(10px, 24px);
         .x(right);
         .fz(12px, 20px);
-        color: #565656;
+        color: #777;
     }
 
+    .u-author{
+        // .pa;.rt(0);
+    }
     .u-author-avatar {
         .size(24px);
         .y;
         .r(2px);
         .mr(5px);
+        // .fr;
+        // .ml(5px);
     }
     .u-author-name {
-        a:hover {
-            box-shadow: 0 1px 0 @color-link;
+        .fz(12px,24px);
+        // .fl;
+        color:#666;
+        &:hover {
+            color:@pink;
         }
     }
     .u-date {
         .db;
         .mt(3px);
+        .clear;
     }
 
     .u-down {

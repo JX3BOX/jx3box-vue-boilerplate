@@ -1,5 +1,5 @@
 <template>
-    <div class="m-archive-box">
+    <div class="m-archive-box" :loading="loading">
 
         <!-- 搜索 -->
         <div class="m-archive-search">
@@ -105,9 +105,15 @@
                     >
                     <span
                         class="u-mode u-likes"
+                        :class="{ on: order == 'likes' }"
+                        @click="reorder('likes')"
+                        ><i class="el-icon-star-off"></i> 点赞最多</span
+                    >
+                    <span
+                        class="u-mode u-favs"
                         :class="{ on: order == 'favs' }"
                         @click="reorder('favs')"
-                        ><i class="el-icon-star-off"></i> 点赞最多</span
+                        ><i class="el-icon-star-off"></i> 收藏最多</span
                     >
                     <span
                         class="u-mode u-downs"
@@ -146,7 +152,7 @@
                             :style="item.post.color | isHighlight"
                             :href="item.post.ID | postLink"
                             :target="target"
-                            >{{ item.post.post_title }}</a
+                            >{{ item.post.post_title || '无标题'}}</a
                         >
 
                         <!-- 角标 -->

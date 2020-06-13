@@ -1,8 +1,17 @@
 <template>
     <div class="m-info">
-        <a href="/house/#/">🌏 增加地图选房</a>
-        <a href="/house/#/flower">🌺 花价增加默认区服绑定</a>
-        <a href="/house/#/furniture">🎹 （即将上线）优化版家具检索</a>
+        <div class="m-info-notice">
+            <span class="u-item" href="/macro/#/">🌈 全新宏库上线啦 支持多套奇穴</span>
+            <!-- <span class="u-item" href="/macro/#/">🌈 <span>即将上线</span> · 私人宏仓库</span> -->
+            <!-- <span class="u-item" href="/macro/#/">✨ <span>即将上线</span> · 云端宏一键同步</span> -->
+            <!-- <span class="u-item" href="/house/#/rank">⚽️ <span>即将上线</span> · 云端宏排行榜</span> -->
+        </div>
+
+        <div class="m-info-router">
+            <router-link to="/"><i class="el-icon-collection"></i></router-link>
+            <router-link to="/rank"><i class="el-icon-s-data"></i></router-link>
+            <router-link to="/bucket"><i class="el-icon-receiving"></i></router-link>
+        </div>
     </div>
 </template>
 
