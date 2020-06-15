@@ -15,7 +15,8 @@
         },
         computed:{},
         methods:{},
-        mounted:function(){},
+        filters:{},
+        created:function(){},
         components : {
         }
     }
