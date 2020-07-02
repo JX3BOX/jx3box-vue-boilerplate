@@ -268,7 +268,7 @@ export default {
             loading: false, //加载状态
 
             search : '',
-            searchType : '',
+            searchType : 'title',
 
             data: [], //数据列表
             page: 1, //当前页数
