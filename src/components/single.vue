@@ -51,11 +51,6 @@
                 </a>
             </div>
 
-            <!-- 操作 -->
-            <div class="m-single-panel">
-                <Fav />
-            </div>
-
         </header>
 
         <!-- 文章前 -->
@@ -78,7 +73,17 @@
         </div>
 
         <!-- 文章后 -->
-        <div class="m-single-append"></div>
+        <div class="m-single-append">
+            <!-- 操作 -->
+            <div class="m-single-panel" v-if="!loading">
+                <div class="u-minigroup">
+                    <Print class="u-fn" :title="title" :authorID="post.post_author"/>
+                    <QRcode class="u-fn" />
+                    <Sharing class="u-fn" :title="title"/>
+                </div>
+                <Fav />
+            </div>
+        </div>
 
         <!-- 评论 -->
         <div class="m-single-comment">
@@ -101,6 +106,7 @@
 </template>
 
 <script>
+import Article from '@jx3box/jx3box-editor/src/Article'
 // 助手函数
 import _ from "lodash";
 import dateFormat from "../utils/dateFormat";
@@ -195,6 +201,9 @@ export default {
             postStat(this.id)
         }
     },
+    components : {
+        Article
+    }
 };
 </script>
 
