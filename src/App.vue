@@ -35,7 +35,7 @@ import Nav from "@/components/Nav.vue";
 import Extend from "@/components/Extend.vue";
 import tabs from "@/components/tabs";
 import single from "@/components/single.vue";
-const { getRewrite } = require("@jx3box/jx3box-common/js/utils");
+import {getRewrite} from '@jx3box/jx3box-common/js/utils'
 
 export default {
     name: "App",
