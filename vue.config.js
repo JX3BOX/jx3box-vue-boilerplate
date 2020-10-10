@@ -30,7 +30,8 @@ module.exports = {
                     request.setHeader("origin", "");
                 }
             }
-        }
+        },
+        disableHostCheck: true
     },
 
     //webpack配置
