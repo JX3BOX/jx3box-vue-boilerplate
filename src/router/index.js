@@ -9,10 +9,11 @@ Vue.use(VueRouter);
 const routes = [
     { name: "index", path: "/", component: Index },
     // { name: "fn", path: "/fn", component: Fn },
-    // { name: "single", path: "/view/:id", component: Single },
 ];
 
 const router = new VueRouter({
+    // mode: "history",
+    // base: '/team',
     routes,
 });
 

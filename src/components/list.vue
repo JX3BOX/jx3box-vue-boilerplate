@@ -28,17 +28,16 @@
                     placeholder="请输入关键词"
                     v-model="search"
                     class="input-with-select"
-                    @change="loadPosts"
                 >
-                    <el-select
+                    <span slot="prepend">关键词</span>
+                    <!-- <el-select
                         v-model="searchType"
                         slot="prepend"
                         placeholder="请选择"
-                        @change="loadPosts"
                     >
                         <el-option label="标题" value="title"></el-option>
                         <el-option label="作者" value="authorname"></el-option>
-                    </el-select>
+                    </el-select> -->
                     <el-button slot="append" icon="el-icon-search"></el-button>
                 </el-input>
             </div>
@@ -88,6 +87,7 @@
                                 <i
                                     v-for="mark in item.post.mark"
                                     class="u-mark"
+                                    :class="mark | markcls"
                                     :key="mark"
                                     >{{ mark | showMark }}</i
                                 >
@@ -136,6 +136,7 @@ import {
     __ossMirror,
     __imgPath,
     __ossRoot,
+    __Root
 } from "@jx3box/jx3box-common/js/jx3box";
 import {
     showAvatar,
@@ -143,6 +144,7 @@ import {
     showMinibanner,
     publishLink,
     buildTarget,
+    getAppType
 } from "@jx3box/jx3box-common/js/utils";
 export default {
     name: "list",
@@ -154,8 +156,9 @@ export default {
             data: [], //数据列表
             page: 1, //当前页数
             total: 1, //总条目数
+            pages: 1, //总页数
             per: 10, //每页条目
-            pages:1,
+            appendMode : false, //追加模式
 
             search: "",
             searchType: "title",
@@ -166,15 +169,17 @@ export default {
     },
     computed: {
         subtype: function() {
-            return this.$store.state.subtype;
+            // return this.$store.state.subtype;
+            return this.$route.params.subtype
         },
         params: function() {
             let params = {
                 per: this.per,
                 subtype: this.subtype,
+                page : ~~this.page || 1
             };
             if (this.search) {
-                params[this.searchType] = this.search;
+                params.search = this.search;
             }
             if (this.order) {
                 params.order = this.order;
@@ -189,24 +194,20 @@ export default {
         },
         // 根据栏目定义
         defaultBanner: function() {
-            return __ossMirror + "image/banner/null.png";
+            return __imgPath + "image/banner/null.png";
         },
         publish_link: function(val) {
-            return publishLink("fb");
+            return publishLink("bbs");
         },
     },
     methods: {
-        loadPosts: function(i = 1, append = false) {
-            let query = Object.assign(this.params, {
-                page: i,
-            });
+        loadPosts: function() {
             this.loading = true;
-            getPosts(query, this)
+            getPosts(this.params, this)
                 .then((res) => {
-                    if (append) {
+                    if (this.appendMode) {
                         this.data = this.data.concat(res.data.data.list);
                     } else {
-                        window.scrollTo(0, 0);
                         this.data = res.data.data.list;
                     }
                     this.total = res.data.data.total;
@@ -217,20 +218,23 @@ export default {
                 });
         },
         changePage: function(i) {
-            this.loadPosts(i);
+            this.appendMode = false
+            this.page = i
+            window.scrollTo(0, 0);
         },
         appendPage: function(i) {
-            this.loadPosts(i, true);
+            this.appendMode = true
+            this.page = i
         },
-        filter : function (o){
-            this[o['type']] = o['val']
-            this.loadPosts();
+        filter: function(o) {
+            this.appendMode = false
+            this[o["type"]] = o["val"];
         },
         showBanner: function(val, subtype) {
             if (val) {
                 return showMinibanner(val);
             } else {
-                return __ossMirror + "image/banner/bbs" + subtype + ".png?v=1";
+                return __imgPath + "image/banner/bbs" + subtype + ".png?v=1";
             }
             return this.defaultBanner;
         },
@@ -246,7 +250,7 @@ export default {
             return authorLink(val);
         },
         postLink: function(val) {
-            return "./?pid=" + val;
+            return location.origin + '/' + getAppType() + '/' + val;
         },
         isHighlight: function(val) {
             return val ? `color:${val};font-weight:600;` : "";
@@ -254,9 +258,24 @@ export default {
         showMark: function(val) {
             return mark_map[val];
         },
+        markcls : function (val){
+            return 'u-mark-' + val
+        }
+    },
+    watch : {
+        params : {
+            deep : true,
+            handler : function (){
+                this.loadPosts()
+            }
+        },
+        '$route.query.page' : function (val){
+            this.page = ~~val
+        }
     },
     created: function() {
-        this.loadPosts(1);
+        this.page = ~~this.$route.query.page || 1
+        this.loadPosts()
     },
     components: {
         listbox

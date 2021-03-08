@@ -1,16 +1,12 @@
 <template>
     <div class="m-info">
         <div class="m-info-notice">
-            <span class="u-item" href="/macro/#/">🌈 全新宏库上线啦 支持多套奇穴</span>
-            <!-- <span class="u-item" href="/macro/#/">🌈 <span>即将上线</span> · 私人宏仓库</span> -->
-            <!-- <span class="u-item" href="/macro/#/">✨ <span>即将上线</span> · 云端宏一键同步</span> -->
-            <!-- <span class="u-item" href="/house/#/rank">⚽️ <span>即将上线</span> · 云端宏排行榜</span> -->
+            <!-- <span class="u-item" href="" target="_blank">🌈 自用宏将会被设为私有状态,不影响游戏内加载</span> -->
         </div>
 
-        <div class="m-info-router">
-            <router-link to="/"><i class="el-icon-collection"></i></router-link>
-            <router-link to="/rank"><i class="el-icon-s-data"></i></router-link>
-            <router-link to="/bucket"><i class="el-icon-receiving"></i></router-link>
+        <div class="m-info-router" v-if="mode == 'list'">
+            <router-link title="云端宏" to="/"><i class="el-icon-collection"></i></router-link>
+            <router-link title="排行榜" to="/rank"><i class="el-icon-s-data"></i></router-link>
         </div>
     </div>
 </template>
@@ -22,7 +18,11 @@ export default {
     data: function() {
         return {};
     },
-    computed: {},
+    computed: {
+        mode: function() {
+            return this.$store.state.mode;
+        },
+    },
     methods: {},
     mounted: function() {}
 };

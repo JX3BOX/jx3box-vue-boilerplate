@@ -33,7 +33,7 @@
             color:@pink;
         }
     }
-    .router-link-exact-active,.on{
+    .router-link-exact-active{
         color:@pink;
     }
     .none;
@@ -41,5 +41,11 @@
 
 @media screen and (max-width:@phone){
     .m-info-notice{.none;}
-    .m-info-router{.db;float:none;.x(right);}
+    .m-info-router{.db;float: none;.x(right);}
+}
+
+@media screen and (max-width:@phone){
+    .p-list .c-crumb{
+        .none;
+    }
 }
