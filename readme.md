@@ -21,18 +21,18 @@
 3. css mixin默认包含[csslab](https://github.com/iRuxu/csslab)
 
 #### 部署上线
-+ 🌈 添加项目secrets=>`AccessKey_ID`+`Access_Key_Secret`
-+ 🌈 如需要绑定独立域,需在github setting中指定并修改DNS指向.
-+ 🆘 ecs|cdn在改版过程中,需对404作合理处理(跳转至搜索||rewrite至新地址) 
-+ ✨ ecs需自行部署,同步gh-pages分支.
++ 🌈 添加项目secrets=>`AccessKey_ID`+`Access_Key_Secret`（公开仓库已共享指定密钥、私有库需要单独设置）
++ 🌈 （可选）如需要绑定独立域,需在github setting中指定并修改DNS指向.
++ 🆘 （可选）统一rewrite请补填至apidocs仓库
++ ✨ ecs需自行部署,执行`git deploy`同步gh-pages分支.
 
 ## 其它说明
 #### 静态资源路径  
 默认通过 ***.env*** 文件中 **`STATIC_PATH`** 来指定加载路径,可选值:  
-1. 🌍 jsdelivr - 自动回源到github pages 【当前默认】 
+1. 🌍 jsdelivr - 自动回源到github pages  
 2. 🌸 root - 使用相对路径,且项目为独立域时
 3. 🌷 repo - 使用相对路径,且项目没有独立域时
-4. 💟 mirror - 使用OSS=>CDN镜像 
+4. 💟 mirror - 使用OSS=>CDN镜像 【当前默认】
 
 #### 部署集
 github pages与oss由actions自动部署,ecs自行部署

@@ -1,8 +1,5 @@
 <template>
-    <div
-        id="app"
-        :class="{ 'p-list': mode == 'list', 'p-single': mode == 'single' }"
-    >
+    <div id="app">
         <Header></Header>
         <Breadcrumb
             name="云端宏"
@@ -14,78 +11,28 @@
             :crumbEnable="true"
         >
             <img slot="logo" svg-inline src="./assets/img/logo.svg" />
-            <Info />
         </Breadcrumb>
-        <LeftSidebar>
-            <Nav />
-        </LeftSidebar>
+        <LeftSidebar>left side</LeftSidebar>
         <Main :withoutRight="false">
-            <single v-if="mode == 'single'" />
-            <div class="m-main" v-else>
-                <tabs />
+            <div class="m-main">
                 <router-view />
             </div>
-            <RightSidebar>
-                <Extend />
-            </RightSidebar>
+            <RightSidebar>right side</RightSidebar>
             <Footer></Footer>
         </Main>
     </div>
 </template>
 
 <script>
-import Info from "@/components/Info.vue";
-import Nav from "@/components/Nav.vue";
-import Extend from "@/components/Extend.vue";
-import tabs from "@/components/tabs";
-import single from "@/components/single.vue";
-import {
-    getPID,
-    getAppID,
-    getQuery,
-    getAppType,
-} from "@jx3box/jx3box-common/js/utils";
-import { __Root } from "@jx3box/jx3box-common/data/jx3box.json";
-
 export default {
     name: "App",
     props: [],
-    data: function() {
+    data: function () {
         return {};
     },
-    computed: {
-        mode: function() {
-            return this.$store.state.mode;
-        },
-    },
+    computed: {},
     methods: {},
-    beforeCreate: function() {
-        let id = getAppID();
-        let pid = getPID();
-
-        // 旧单页链接跳转
-        if (!id && pid) {
-            let type = getAppType();
-            let test = __Root + type + "/" + pid;
-            location.href = __Root + type + "/" + pid;
-        }
-
-        // 处理模式 & 文章ID
-        this.$store.state.mode = id ? "single" : "list";
-        this.$store.state.pid = id;
-
-        // 捕获subtype
-        if (this.$store.state.mode == "list") {
-            this.$store.state.subtype = getQuery("subtype");
-        }
-    },
-    components: {
-        Info,
-        Nav,
-        Extend,
-        tabs,
-        single,
-    },
+    components: {},
 };
 </script>
 
