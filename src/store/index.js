@@ -4,8 +4,14 @@ import Vuex from "vuex";
 Vue.use(Vuex);
 
 let store = {
-    state: {},
-    mutations: {},
+    state: {
+        client: location.href.includes("origin") ? "origin" : "std",
+    },
+    mutations: {
+        switchClient: function(state, val) {
+            state.client = val || "std";
+        },
+    },
     getters: {},
     actions: {},
     modules: {},
