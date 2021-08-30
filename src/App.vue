@@ -2,11 +2,11 @@
     <div id="app">
         <Header></Header>
         <Breadcrumb
-            name="云端宏"
-            slug="macro"
-            root="/macro"
-            :publishEnable="true"
-            :adminEnable="true"
+            name="配装器"
+            slug="j3pz"
+            root="/j3pz"
+            :publishEnable="false"
+            :adminEnable="false"
             :feedbackEnable="true"
             :crumbEnable="true"
         >
