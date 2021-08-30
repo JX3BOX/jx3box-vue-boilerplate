@@ -2,11 +2,11 @@
     <div id="app">
         <Header></Header>
         <Breadcrumb
-            name="配装器"
-            slug="j3pz"
-            root="/j3pz"
-            :publishEnable="false"
-            :adminEnable="false"
+            name="测试"
+            slug="test"
+            root="/test"
+            :publishEnable="true"
+            :adminEnable="true"
             :feedbackEnable="true"
             :crumbEnable="true"
         >

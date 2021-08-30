@@ -1,5 +1,5 @@
 {
-  "name": "@jx3box/jx3box-j3pz",
+  "name": "repo",
   "private": true,
   "scripts": {
     "dev": "env DEV_SERVER=true vue-cli-service serve",
@@ -10,8 +10,8 @@
     "update": "npm --registry https://registry.npmjs.org install @jx3box/jx3box-common-ui@latest @jx3box/jx3box-common@latest"
   },
   "dependencies": {
-    "@jx3box/jx3box-common": "^6.5.9",
-    "@jx3box/jx3box-common-ui": "^4.9.9",
+    "@jx3box/jx3box-common": "^6.4.8",
+    "@jx3box/jx3box-common-ui": "^4.6.3",
     "axios": "^0.19.2",
     "core-js": "^3.4.3",
     "element-ui": "^2.13.0",
