@@ -25,32 +25,56 @@ module.exports = {
     devServer: {
         proxy: {
             "/api/vip": {
-                "target": "https://pay.jx3box.com",
-                "onProxyReq": function (request) {
+                target: "https://pay.jx3box.com",
+                onProxyReq: function(request) {
                     request.setHeader("origin", "");
-                }
+                },
+            },
+            "/api/inspire":{
+                target: "https://pay.jx3box.com",
+                onProxyReq: function(request) {
+                    request.setHeader("origin", "");
+                },
+            },
+            "/api/messages": {
+                target: "https://helper.jx3box.com",
+                onProxyReq: function(request) {
+                    request.setHeader("origin", "");
+                },
             },
             "/api/summary": {
-                "target": "https://next2.jx3box.com",
-                "onProxyReq": function (request) {
+                target: "https://next2.jx3box.com",
+                onProxyReq: function(request) {
                     request.setHeader("origin", "");
-                }
+                },
             },
             "/api/comment": {
-                "target": "https://next2.jx3box.com",
-                "onProxyReq": function (request) {
+                target: "https://next2.jx3box.com",
+                onProxyReq: function(request) {
                     request.setHeader("origin", "");
-                }
+                },
+            },
+            "/api/team": {
+                target: "https://team.api.jx3box.com",
+                onProxyReq: function(request) {
+                    request.setHeader("origin", "");
+                },
+            },
+            "/xoyo/daily": {
+                target: "https://team.api.jx3box.com",
+                onProxyReq: function(request) {
+                    request.setHeader("origin", "");
+                },
             },
             "/api/cms": {
-                "target": process.env["DEV_SERVER"] == "true" ? "http://localhost:5120" : "https://cms.jx3box.com",
+                target: process.env["DEV_SERVER"] == "true" ? "http://localhost:5120" : "https://cms.jx3box.com",
             },
             "/api": {
-                "target": "https://next2.jx3box.com",
-                "onProxyReq": function (request) {
+                target: "https://next2.jx3box.com",
+                onProxyReq: function(request) {
                     request.setHeader("origin", "");
-                }
-            }
+                },
+            },
         },
         disableHostCheck: true
     },

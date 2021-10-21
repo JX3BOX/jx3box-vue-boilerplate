@@ -10,7 +10,7 @@
             :feedbackEnable="true"
             :crumbEnable="true"
         >
-            <img slot="logo" svg-inline src="./assets/img/logo.svg" />
+            <img slot="logo" svg-inline :src="getAppIcon('macro')" />
         </Breadcrumb>
         <LeftSidebar>left side</LeftSidebar>
         <Main :withoutRight="false">
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import {getAppIcon} from '@jx3box/jx3box-common/js/utils'
 export default {
     name: "App",
     props: [],
@@ -31,11 +32,16 @@ export default {
         return {};
     },
     computed: {},
-    methods: {},
+    methods: {getAppIcon},
     components: {},
 };
 </script>
 
 <style lang="less">
 @import "./assets/css/app.less";
+@media screen and (max-width: @phone) {
+    .c-crumb {
+        .none;
+    }
+}
 </style>
